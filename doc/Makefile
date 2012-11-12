@@ -41,7 +41,8 @@ html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
-	@mv $(BUILDDIR)/html/* $(DEPLOYDIR)
+	@rm -rf $(DEPLOYDIR)/_*
+	@cp -r $(BUILDDIR)/html/* $(DEPLOYDIR)
 	@echo "Deployed to The HTML pages are in $(BUILDDIR)/html."
 
 dirhtml:
