@@ -4,13 +4,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pypsyexp &mdash; PyPsyExp v2010.04 documentation</title>
+    <title>pypsyexp &mdash; PyPsyExp 2010.04 documentation</title>
+    
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -24,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/nyu_favicon.ico"/>
-    <link rel="top" title="PyPsyExp v2010.04 documentation" href="../index.html" />
+    <link rel="top" title="PyPsyExp 2010.04 documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body>
@@ -72,7 +75,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -143,8 +146,8 @@
 <div class="viewcode-block" id="pgColor"><a class="viewcode-back" href="../pypsyexp.html#pypsyexp.pgColor">[docs]</a><span class="k">def</span> <span class="nf">pgColor</span><span class="p">(</span> <span class="n">colorid</span> <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    Converts either an RGB tuple or a string into a valid rgb tuple.</span>
-
-<span class="sd">    Args:</span>
+<span class="sd">    </span>
+<span class="sd">    Required Arguments:</span>
 <span class="sd">     * ``colorid`` (tuple or str): Color name or rgb tuple</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
@@ -155,9 +158,9 @@
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span> <span class="n">colorid</span> <span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">pygame</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">THECOLORS</span><span class="p">[</span><span class="n">colorid</span><span class="p">]</span>
-        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span>
             <span class="n">warn</span><span class="p">(</span> <span class="s">&quot;Could not find color </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">colorid</span> <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">on_exit</span><span class="p">(</span> <span class="n">message</span> <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="n">msg</span>
     <span class="c"># must be an RGB code...</span>
     <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span> <span class="n">colorid</span><span class="p">,</span> <span class="s">&#39;__contains__&#39;</span> <span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span> <span class="n">colorid</span> <span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span> <span class="n">colorid</span> <span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
@@ -165,14 +168,13 @@
                 <span class="k">return</span> <span class="n">colorid</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">msg</span> <span class="o">=</span>  <span class="s">&quot;Invalid rgb key: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">colorid</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">on_exit</span><span class="p">(</span> <span class="n">msg</span> <span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">msg</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span>  <span class="s">&quot;Invalid rgb key: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">colorid</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">on_exit</span><span class="p">(</span> <span class="n">msg</span> <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">msg</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;Invalid color value : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">colorid</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">on_exit</span><span class="p">(</span> <span class="n">msg</span> <span class="p">)</span>
-
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">,</span>  <span class="n">msg</span>
 <span class="c">#------------------------------------------------------------</span>
 <span class="c"># General purpose Experiment class</span>
 <span class="c">#------------------------------------------------------------</span></div>
@@ -183,7 +185,7 @@
     <span class="c">#------------------------------------------------------------    </span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nofullscreen</span><span class="p">,</span> <span class="n">screenres</span><span class="p">,</span> <span class="n">experimentname</span><span class="p">,</span> <span class="o">**</span><span class="n">useroptions</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;  </span>
-<span class="sd">        Args:</span>
+<span class="sd">        Required Arguments:</span>
 <span class="sd">         * nofullscreen (bool):</span>
 <span class="sd">            * If ``nofullscreen`` is ``True``, the display created will be</span>
 <span class="sd">              windowed.</span>
@@ -192,7 +194,7 @@
 <span class="sd">           pixel dimensions.</span>
 <span class="sd">         * ``experimentname`` (str): string that will be displayed as the title</span>
 <span class="sd">           of the new window.</span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``experimentversion`` (str): The version name for the experiment.</span>
 <span class="sd">         * ``fontname`` (str): Name of default font.</span>
 <span class="sd">         * ``fontsize`` (int): Size of default font.</span>
@@ -354,10 +356,9 @@
             <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
                 <span class="n">warn</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span> <span class="s">&quot;Error loading sounds.&quot;</span> <span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">on_exit</span><span class="p">()</span>
-    
+        
         <span class="c"># First line output will be date/time string.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_trial</span><span class="p">(</span> <span class="p">[</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span> <span class="s">&quot;%a, </span><span class="si">%d</span><span class="s"> %b %Y %H:%M:%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span> <span class="p">)]</span> <span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_trial</span><span class="p">(</span> <span class="p">[</span><span class="s">&quot;#Date: &quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span> <span class="s">&quot;%a, </span><span class="si">%d</span><span class="s"> %b %Y %H:%M:%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span> <span class="p">)]</span> <span class="p">)</span>
     
     <span class="c">#------------------------------------------------------------</span>
     <span class="c"># set_filename</span>
@@ -368,7 +369,7 @@
 <span class="sd">        passed, the datafile opened is named the current subject</span>
 <span class="sd">        number. </span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``name`` (str): The filename.</span>
 <span class="sd">        </span>
 <span class="sd">        Sets:</span>
@@ -390,7 +391,7 @@
 <span class="sd">        Loads images and sounds by calling ``load_all_images`` and</span>
 <span class="sd">        ``load_all_sounds``.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``img_directory`` (str): Path to the folder containing</span>
 <span class="sd">           images.</span>
 <span class="sd">         * ``snd_directory`` (str): Path to the folder containing</span>
@@ -416,7 +417,7 @@
 <span class="sd">       All images are placed in a list called ``self.resources``.  All images</span>
 <span class="sd">       must be referenced by name, e.g.  ``self.resources[&#39;image1.gif&#39;]``. </span>
 <span class="sd">        </span>
-<span class="sd">       Kwargs:</span>
+<span class="sd">       Keyword Arguments:</span>
 <span class="sd">        * ``directory`` (str): Path to the folder containing images.</span>
 <span class="sd">       </span>
 <span class="sd">       Modifies:</span>
@@ -427,7 +428,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span> <span class="n">directory</span> <span class="p">):</span>
             <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">directory</span> <span class="p">)</span>
         <span class="n">files</span> <span class="o">=</span> <span class="p">[</span> <span class="n">fn</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">,</span> <span class="n">directory</span> <span class="p">))</span>
-                 <span class="k">if</span> <span class="n">fn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;.&quot;</span> <span class="ow">and</span> <span class="n">fn</span><span class="o">!=</span><span class="s">&quot;thumbs.db&quot;</span> <span class="p">]</span>
+                 <span class="k">if</span> <span class="n">fn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;.&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="s">&quot;Thumbs.db&quot;</span> <span class="ow">in</span> <span class="n">fn</span> <span class="p">]</span>
         <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
             <span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">curdir</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">fn</span> <span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
@@ -448,7 +449,7 @@
 <span class="sd">        placed in a list called ``self.resources``. All sounds must be</span>
 <span class="sd">        referenced by name, i.e.  ``self.resources[&#39;sound1.wav&#39;].play()``</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``directory`` (str): Path to the folder containing images.</span>
 <span class="sd">        </span>
 <span class="sd">        Updates:</span>
@@ -489,10 +490,10 @@
 <span class="sd">        If neither of these conditions are met, the image will not have</span>
 <span class="sd">        transparency.</span>
 
-<span class="sd">        Args:</span>
+<span class="sd">        Required Arguments:</span>
 <span class="sd">         * ``filename`` (str): path to image file.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``colorkey`` (tuple of ints): path to image file.</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
@@ -540,7 +541,7 @@
 <span class="sd">        are automatically updated and written back into the file for subsequent</span>
 <span class="sd">        runnings.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``filename`` (str): Path to the patterncode file. Defaults to</span>
 <span class="sd">           ``patterncode.txt``</span>
 <span class="sd">        </span>
@@ -580,7 +581,7 @@
 <span class="sd">        conditions. The host, username, and password can be set during the</span>
 <span class="sd">        initialization of the ``Experiment`` object.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``host`` (str): web address of file hosting site</span>
 <span class="sd">         * ``username`` (str): account name on the host site</span>
 <span class="sd">         * ``password`` (str): password for the account </span>
@@ -642,7 +643,7 @@
 <span class="sd">        Writes values to ``self.cond``, ``self.ncond``, and ``self.subj``.</span>
 <span class="sd">        Returns the new lines to be written back to the file.</span>
 <span class="sd">        </span>
-<span class="sd">        Args:</span>
+<span class="sd">        Required Arguments:</span>
 <span class="sd">         * ``lines`` (list of strs): Lines read in from patterncode file.</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
@@ -670,10 +671,10 @@
 <span class="sd">        Writes a list of data to a file as a line in which each value seperated</span>
 <span class="sd">        by a space. </span>
 <span class="sd">        </span>
-<span class="sd">        Args:</span>
+<span class="sd">        Required Arguments:</span>
 <span class="sd">         * ``myline`` (iterable): Iterable of items to be written to the line</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``echo`` (bool): If ``True``, prints the line to the screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>   
         <span class="n">myline</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">myline</span><span class="p">)</span> <span class="p">)</span>
@@ -692,7 +693,7 @@
 <span class="sd">        Uploads data to a file storage site.  FTP credentials can be set during</span>
 <span class="sd">        the initialization of the ``Experiment`` object.</span>
 
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``host`` (str): Hostname of ftp server.</span>
 <span class="sd">         * ``username`` (str): Username on server.</span>
 <span class="sd">         * ``password`` (str): Password to server.</span>
@@ -731,7 +732,7 @@
 <div class="viewcode-block" id="Experiment.tick"><a class="viewcode-back" href="../pypsyexp.html#pypsyexp.Experiment.tick">[docs]</a>    <span class="k">def</span> <span class="nf">tick</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Waits until a given time based on ``self.framerate``. Useful while in a</span>
-<span class="sd">        loop, to limit the rate at which it loops.</span>
+<span class="sd">        loop to limit the rate at which it loops.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">suppresspygame</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">framerate</span> <span class="p">)</span>
@@ -744,7 +745,7 @@
 <span class="sd">        Blits the surface passed to the default display screen created by </span>
 <span class="sd">        the experiment class. Then flips it. </span>
 
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``mysurf`` (``pygame.surface``): The surface to be written to the</span>
 <span class="sd">           screen.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -756,12 +757,11 @@
     <span class="c">#------------------------------------------------------------</span>
     <span class="c"># place_text_image</span>
     <span class="c">#------------------------------------------------------------</span></div>
-<div class="viewcode-block" id="Experiment.place_text_image"><a class="viewcode-back" href="../pypsyexp.html#pypsyexp.Experiment.place_text_image">[docs]</a>    <span class="k">def</span> <span class="nf">place_text_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mysurf</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">txtcolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fontname</span><span class="o">=</span><span class="bp">None</span> <span class="p">):</span>
+<div class="viewcode-block" id="Experiment.place_text_image"><a class="viewcode-back" href="../pypsyexp.html#pypsyexp.Experiment.place_text_image">[docs]</a>    <span class="k">def</span> <span class="nf">place_text_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yoff</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">txtcolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fontname</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">mysurf</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">0</span> <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Blits a Text object to the surface passed.</span>
-
-<span class="sd">        Kwargs:</span>
-<span class="sd">         * ``mysurf`` (``pygame.surface``): Surface object to be blitted to.</span>
+<span class="sd">        </span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``prompt`` (str): String to be displayed</span>
 <span class="sd">         * ``size`` (int): text size</span>
 <span class="sd">         * ``xoff`` (int): Horizontal offset from center.</span>
@@ -769,7 +769,10 @@
 <span class="sd">         * ``txtcolor`` (str or tuple): Color of the test (name or RGB).</span>
 <span class="sd">         * ``bgcolor`` (str or tuple): Color of the background (name or RGB).</span>
 <span class="sd">         * ``font`` (``pygame.font``): Font object to use for text rendering.</span>
+<span class="sd">           Overrides other font values.</span>
 <span class="sd">         * ``fontname`` (str): Name of font to use.</span>
+<span class="sd">         * ``mysurf`` (``pygame.surface``): Surface object to be blitted to.</span>
+<span class="sd">         * ``angle`` (int): Angle for text to be rotated</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
 <span class="sd">            A pygame surface object with the text placed on it.</span>
@@ -780,11 +783,14 @@
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">,</span> <span class="s">&quot;Prompt required.&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">mysurf</span><span class="p">:</span>
             <span class="n">mysurf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">background</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">fontname</span><span class="p">:</span>
-            <span class="n">fontface</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontname</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">size</span><span class="p">:</span>
-            <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontsize</span>
-        <span class="n">thisfont</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span> <span class="n">fontface</span><span class="p">,</span> <span class="n">size</span> <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">font</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">fontname</span><span class="p">:</span>
+                <span class="n">fontname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontname</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">size</span><span class="p">:</span>
+                <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fontsize</span>
+            <span class="n">thisfont</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">SysFont</span><span class="p">(</span> <span class="n">fontname</span><span class="p">,</span> <span class="n">size</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">thisfont</span> <span class="o">=</span> <span class="n">font</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">txtcolor</span><span class="p">:</span>
             <span class="n">txtcolor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fgcolor</span>
         <span class="k">else</span><span class="p">:</span>
@@ -794,6 +800,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">bgcolor</span> <span class="o">=</span> <span class="n">pgColor</span><span class="p">(</span> <span class="n">bgcolor</span> <span class="p">)</span>
         <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_text_image</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="n">thisfont</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span> <span class="n">txtcolor</span><span class="o">=</span><span class="n">txtcolor</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="n">bgcolor</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">angle</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
         <span class="n">textpos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">placing_rect</span><span class="p">(</span><span class="n">mysurf</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">xoff</span><span class="p">,</span> <span class="n">yoff</span><span class="p">)</span>
         <span class="n">mysurf</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">textpos</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">mysurf</span>
@@ -805,7 +813,7 @@
         <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">        Creates a Surface with anti-aliased text written on it, and returns it.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``font`` (``pygame.font``): The font to use for the text.</span>
 <span class="sd">         * ``prompt`` (str): String to be displayed</span>
 <span class="sd">         * ``txtcolor`` (str or tuple): Color for text (RGB or name)</span>
@@ -839,7 +847,7 @@
 <span class="sd">        Creates a Rect from Surface ``inner_surf`` and places it onto</span>
 <span class="sd">        Surface ``bkgd_surf``.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``bkgd_surf`` (``pygame.surface``): Surface to write to.</span>
 <span class="sd">         * ``inner_surf`` (``pygame.surface``): Surface to write to the other</span>
 <span class="sd">           surface.</span>
@@ -868,10 +876,10 @@
 <span class="sd">        milliseconds. This function works with .wav files only. It pauses</span>
 <span class="sd">        the timer.</span>
 <span class="sd">        </span>
-<span class="sd">        Args:</span>
+<span class="sd">        Required Arguments:</span>
 <span class="sd">         * ``sndname`` (str): The sound name (omit the .wav extension)</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``pause`` (int): Time in milliseconds to pause the pygame timer</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
@@ -895,10 +903,10 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Centers an image in the screen with a given bgcolor.</span>
 <span class="sd">        </span>
-<span class="sd">        Args: </span>
+<span class="sd">        Required Arguments: </span>
 <span class="sd">         * ``imagename`` (str): Name of image.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``bgcolor`` (str or tuple): Background color (name or RGB)</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
@@ -923,10 +931,10 @@
 <span class="sd">            This *creates* a Surface object, whereas show_image_add is passed a</span>
 <span class="sd">            surface to be blitted on.</span>
 <span class="sd">        </span>
-<span class="sd">        Args: </span>
+<span class="sd">        Required Arguments: </span>
 <span class="sd">         * ``imagename`` (str): Name of image (must be in ``self.resources``).</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``bgcolor`` (str or tuple): Background color (name or RGB)</span>
 <span class="sd">         * ``xoff`` (int): Horizontal offset from center.</span>
 <span class="sd">         * ``yoff`` (int): Vertical offset from center.</span>
@@ -976,7 +984,7 @@
 <span class="sd">            This REQUIRES a Surface object to be passed, whereas show_image</span>
 <span class="sd">            creates a Surface to be blitted on  </span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``mysurf`` (``pygame.surface``): Surface to blit to. Defaults to ``self.background``</span>
 <span class="sd">         * ``imagename`` (str): Mandatory. Name of image (must be in</span>
 <span class="sd">           ``self.resources``).</span>
@@ -1033,7 +1041,7 @@
 <span class="sd">        Creates a Surface with the dimensions of the display screen, fills</span>
 <span class="sd">        it with a given color, and returns the Surface.  </span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``color`` (str of tuple): Color to draw on screen (name or rgb).</span>
 <span class="sd">           Defaults to ``self.bgcolor``.</span>
 <span class="sd">         * ``rewrite_background`` (bool): Whether the surface is written to</span>
@@ -1060,14 +1068,14 @@
 <span class="sd">        it took from the call to the function to the end of the function</span>
 <span class="sd">        (reaction time; rt) and the response made (res). </span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``val`` (list or tuple) with coded values, e.g. ``[&#39;Left&#39;,</span>
 <span class="sd">           &#39;Right&#39;]`` or ``(0, 1)``</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
 <span class="sd">            A list with reaction time and the value code for the response made.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span> <span class="n">val</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;p&#39;</span><span class="p">,</span><span class="s">&#39;q&#39;</span><span class="p">]</span> <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_response_and_rt</span><span class="p">(</span> <span class="n">val</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;p&#39;</span><span class="p">,</span><span class="s">&#39;q&#39;</span><span class="p">]</span> <span class="p">)</span>
     </div>
 <div class="viewcode-block" id="Experiment.get_response_and_rt"><a class="viewcode-back" href="../pypsyexp.html#pypsyexp.Experiment.get_response_and_rt">[docs]</a>    <span class="k">def</span> <span class="nf">get_response_and_rt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;p&#39;</span><span class="p">,</span><span class="s">&#39;q&#39;</span><span class="p">],</span> <span class="n">val</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; </span>
@@ -1076,12 +1084,12 @@
 <span class="sd">        function to the end of the function (reaction time; rt) and the coded</span>
 <span class="sd">        version of the response (given in &#39;val&#39;). </span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``keys`` (list or tuple of strings) where the keys are the names of</span>
 <span class="sd">           the keys that will be pressed. Defaults to ``[q, p]``. Keypad</span>
 <span class="sd">           numbers == keyboard numbers (although this could change) For a full</span>
 <span class="sd">           list of valid key names, see the libSDL source, under</span>
-<span class="sd">           ``$SDLroot/src/SDL_keyboard.c``.</span>
+<span class="sd">           ``$SDLroot/src/events/SDL_keyboard.c``.</span>
 <span class="sd">         * ``val`` (list or tuple) with coded values, e.g. ``[&#39;Left&#39;,</span>
 <span class="sd">           &#39;Right&#39;]`` or ``(0, 1)``. Defaults to be the same as ``keys``.</span>
 <span class="sd">        </span>
@@ -1094,7 +1102,7 @@
         <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_keystroke</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span> <span class="n">val</span> <span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span> <span class="n">keys</span> <span class="p">):</span>
                 <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="n">r</span><span class="p">:</span>
                     <span class="k">return</span> <span class="p">(</span><span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">get_ticks</span><span class="p">()</span><span class="o">-</span><span class="n">time_stamp</span><span class="p">),</span> <span class="n">val</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     </div>
@@ -1111,7 +1119,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Waits for a key to be pressed, then Returns the key mapping for a</span>
 <span class="sd">        single pressed letter, ignoring modifier keys. Actual key mappings are</span>
-<span class="sd">        found in libSDL source, in: ``$SDLROOT/src/SDL_keyboard.c``.</span>
+<span class="sd">        found in libSDL source, in: ``$SDLROOT/src/events/SDL_keyboard.c``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
@@ -1130,7 +1138,7 @@
 <div class="viewcode-block" id="Experiment.check_for_exit"><a class="viewcode-back" href="../pypsyexp.html#pypsyexp.Experiment.check_for_exit">[docs]</a>    <span class="k">def</span> <span class="nf">check_for_exit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Checks for the exit sequence: left shift plus ~.</span>
-<span class="sd">        Overload this function to use a different exit keystroke.</span>
+<span class="sd">        Override this function to use a different exit keystroke.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()[</span><span class="n">pglc</span><span class="o">.</span><span class="n">K_LSHIFT</span><span class="p">]</span> <span class="ow">and</span> <span class="n">pygame</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">get_pressed</span><span class="p">()[</span><span class="n">pglc</span><span class="o">.</span><span class="n">K_BACKQUOTE</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">on_exit</span><span class="p">(</span> <span class="n">msg</span><span class="o">=</span><span class="s">&quot;Escape sequence pressed&quot;</span><span class="p">,</span> <span class="n">exception</span><span class="o">=</span><span class="ne">KeyboardInterrupt</span><span class="p">)</span>
@@ -1142,7 +1150,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Makes an onscreen prompt for users to enter a single line of text.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs: </span>
+<span class="sd">        Keyword Arguments: </span>
 <span class="sd">         * ``background`` (``pygame.surface``): the surface that will be</span>
 <span class="sd">           refreshed; defaults to ``self.background``.</span>
 <span class="sd">         * ``x`` (int): The horizontal coordinate, determining the left side of</span>
@@ -1196,7 +1204,7 @@
 <span class="sd">        Pauses the program for &#39;pause&#39;-number of milliseconds. Can be exited</span>
 <span class="sd">        via the default keystroke in``check_for_exit``.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``pause`` (int): (in milliseconds) Amount of time to sleep for.</span>
 <span class="sd">         * ``esckey`` (int; from ``pygame.locals``): A key that, if pressed,</span>
 <span class="sd">           will end the pause.</span>
@@ -1217,7 +1225,7 @@
 <span class="sd">        Draws a square of the size and coordinates requested to the background,</span>
 <span class="sd">        and returns the result.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * ``surf`` (``pygame.surface``): Surface to draw to. Defaults to</span>
 <span class="sd">           ``self.background``.</span>
 <span class="sd">         * ``color`` (str of tuple): Color of rectangle (name or rgb).</span>
@@ -1241,7 +1249,7 @@
 <span class="sd">        with a mouse. They can draw by clicking and dragging the mouse.</span>
 <span class="sd">        Pressing the break_key exits the drawing environment.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * background (``pygame.surface``): The surface to draw to. Defaults to</span>
 <span class="sd">           ``self.background``.</span>
 <span class="sd">         * ``color`` (str or tuple): The maker color. Defaults to</span>
@@ -1319,7 +1327,7 @@
 <span class="sd">        </span>
 <span class="sd">        Draws the gabor patch set by &#39;setup_gabor&#39; </span>
 <span class="sd">        </span>
-<span class="sd">        Args:</span>
+<span class="sd">        Required Arguments:</span>
 <span class="sd">         * ``freq`` (int): the frequency of the gabor patch</span>
 <span class="sd">         * ``angle`` (int): value to determine rotation on the patch. WARNING:</span>
 <span class="sd">           units are degrees/2</span>
@@ -1347,7 +1355,7 @@
         <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">        Clears all data that remains on queue and closes ``self.datafile``.</span>
 <span class="sd">        </span>
-<span class="sd">        Kwargs:</span>
+<span class="sd">        Keyword Arguments:</span>
 <span class="sd">         * msg (str): Exit message.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">datafile</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
@@ -1500,7 +1508,7 @@
         <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">        Draws the gabor patch.</span>
 <span class="sd">        </span>
-<span class="sd">        Args:</span>
+<span class="sd">        Required Arguments:</span>
 <span class="sd">         * ``freq`` (int): the frequency of the gabor patch.</span>
 <span class="sd">         * ``angle`` (int): value to determine rotation on the patch. WARNING:</span>
 <span class="sd">           units are degrees/2.</span>
@@ -1554,7 +1562,7 @@
 <span class="sd">        .. math::</span>
 <span class="sd">            \mathrm{pdf}(\mathcal{N}(\mu, \Sigma), \mathbf{x}) = (2\pi)^{-k/2} |\Sigma|^{- 1/2} e^{-(1/2)(\mathbf{x}-\mu)&#39;\Sigma^{-1}(\mathbf{x}-\mu)}</span>
 <span class="sd">        </span>
-<span class="sd">        Args:</span>
+<span class="sd">        Required Arguments:</span>
 <span class="sd">         * ``x`` - current position in the grid</span>
 <span class="sd">         * ``y`` - current position in the grid</span>
 <span class="sd">         * ``sigma_y`` - variance in each plane of the grid</span>
@@ -1700,7 +1708,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
 </div></div>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">warn</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span> <span class="s">&quot;This is the Python Psychology Experimnt library (pypsyexp) developed by the Computational Cognition lab at NYU.&quot;</span> <span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;This is the Python Psychology Experimnt library (pypsyexp) developed by the Computational Cognition lab at NYU.&quot;</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
@@ -1728,7 +1736,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2011, Todd Gureckis.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

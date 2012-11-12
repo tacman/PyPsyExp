@@ -3,12 +3,13 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
+SPHINXBUILD   = python2 `which sphinx-build`
 PAPER         =
 BUILDDIR      = build
+DEPLOYDIR     = ..
 
 # Internal variables.
-PAPEROPT_a4     = -D latex_paper_size=a4
+PAPEROPT_a5     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
@@ -40,6 +41,8 @@ html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+	@mv $(BUILDDIR)/html/* $(DEPLOYDIR)
+	@echo "Deployed to The HTML pages are in $(BUILDDIR)/html."
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml

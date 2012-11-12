@@ -4,13 +4,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PyPsyExp Documentation &mdash; PyPsyExp v2010.04 documentation</title>
+    <title>PyPsyExp Documentation &mdash; PyPsyExp 2010.04 documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -24,7 +27,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/nyu_favicon.ico"/>
-    <link rel="top" title="PyPsyExp v2010.04 documentation" href="index.html" />
+    <link rel="top" title="PyPsyExp 2010.04 documentation" href="index.html" />
     <link rel="next" title="Tutorials" href="Tutorials.html" />
     <link rel="prev" title="What is PyPsyExp?" href="index.html" /> 
   </head>
@@ -101,7 +104,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -133,9 +136,9 @@
 <li><dl class="first docutils">
 <dt>nofullscreen (bool):</dt>
 <dd><ul class="first last simple">
-<li>If <tt class="docutils literal"><span class="pre">nofullscreen</span></tt> is <tt class="xref docutils literal"><span class="pre">True</span></tt>, the display created will be
+<li>If <tt class="docutils literal"><span class="pre">nofullscreen</span></tt> is <tt class="docutils literal"><span class="pre">True</span></tt>, the display created will be
 windowed.</li>
-<li>If <tt class="xref docutils literal"><span class="pre">False</span></tt> (the default), the display will be fullscreen.</li>
+<li>If <tt class="docutils literal"><span class="pre">False</span></tt> (the default), the display will be fullscreen.</li>
 </ul>
 </dd>
 </dl>
@@ -199,7 +202,7 @@ it with a given color, and returns the Surface.</p>
 <li><tt class="docutils literal"><span class="pre">color</span></tt> (str of tuple): Color to draw on screen (name or rgb).
 Defaults to <tt class="docutils literal"><span class="pre">self.bgcolor</span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre">rewrite_background</span></tt> (bool): Whether the surface is written to
-<tt class="docutils literal"><span class="pre">self.background</span></tt>. Defaults to <tt class="xref docutils literal"><span class="pre">True</span></tt>.</li>
+<tt class="docutils literal"><span class="pre">self.background</span></tt>. Defaults to <tt class="docutils literal"><span class="pre">True</span></tt>.</li>
 </ul>
 </dd>
 </dl>
@@ -483,7 +486,7 @@ referenced by name, i.e.  <tt class="docutils literal"><span class="pre">self.re
 <dd><p>Attempts to load an image given its filename.</p>
 <p>It has two means of determining which color will be made transparent:</p>
 <ol class="arabic simple">
-<li>If <tt class="docutils literal"><span class="pre">colorkey</span></tt> is not <tt class="xref docutils literal"><span class="pre">None</span></tt>, then the color passed will be made
+<li>If <tt class="docutils literal"><span class="pre">colorkey</span></tt> is not <tt class="docutils literal"><span class="pre">None</span></tt>, then the color passed will be made
 transparent.  If <tt class="docutils literal"><span class="pre">colorkey</span></tt> is <tt class="docutils literal"><span class="pre">-1</span></tt>, then the RGB value in the
 top left-most pixel of the image will be set as the colorkey.</li>
 <li>If the filename is of the format <tt class="docutils literal"><span class="pre">*-transp-x-y.EXT</span></tt>, where <tt class="docutils literal"><span class="pre">EXT</span></tt>
@@ -536,7 +539,7 @@ by a space.</p>
 </dd>
 <dt>Keyword Arguments:</dt>
 <dd><ul class="first last simple">
-<li><tt class="docutils literal"><span class="pre">echo</span></tt> (bool): If <tt class="xref docutils literal"><span class="pre">True</span></tt>, prints the line to the screen.</li>
+<li><tt class="docutils literal"><span class="pre">echo</span></tt> (bool): If <tt class="docutils literal"><span class="pre">True</span></tt>, prints the line to the screen.</li>
 </ul>
 </dd>
 </dl>
@@ -544,7 +547,7 @@ by a space.</p>
 
 <dl class="method">
 <dt id="pypsyexp.Experiment.place_text_image">
-<tt class="descname">place_text_image</tt><big>(</big><em>prompt=''</em>, <em>size=None</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>txtcolor=None</em>, <em>bgcolor=None</em>, <em>font=None</em>, <em>fontname=None</em>, <em>mysurf=None</em><big>)</big><a class="reference internal" href="_modules/pypsyexp.html#Experiment.place_text_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pypsyexp.Experiment.place_text_image" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">place_text_image</tt><big>(</big><em>prompt=''</em>, <em>size=None</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>txtcolor=None</em>, <em>bgcolor=None</em>, <em>font=None</em>, <em>fontname=None</em>, <em>mysurf=None</em>, <em>angle=0</em><big>)</big><a class="reference internal" href="_modules/pypsyexp.html#Experiment.place_text_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pypsyexp.Experiment.place_text_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Blits a Text object to the surface passed.</p>
 <dl class="docutils">
 <dt>Keyword Arguments:</dt>
@@ -559,6 +562,7 @@ by a space.</p>
 Overrides other font values.</li>
 <li><tt class="docutils literal"><span class="pre">fontname</span></tt> (str): Name of font to use.</li>
 <li><tt class="docutils literal"><span class="pre">mysurf</span></tt> (<tt class="docutils literal"><span class="pre">pygame.surface</span></tt>): Surface object to be blitted to.</li>
+<li><tt class="docutils literal"><span class="pre">angle</span></tt> (int): Angle for text to be rotated</li>
 </ul>
 </dd>
 <dt>Returns:</dt>
@@ -618,10 +622,10 @@ the timer.</p>
 <li><tt class="docutils literal"><span class="pre">background</span></tt> (<tt class="docutils literal"><span class="pre">pygame.surface</span></tt>): the surface that will be
 refreshed; defaults to <tt class="docutils literal"><span class="pre">self.background</span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre">x</span></tt> (int): The horizontal coordinate, determining the left side of
-the prompt, or the center if <tt class="docutils literal"><span class="pre">centered</span></tt> is <tt class="xref docutils literal"><span class="pre">True</span></tt>.</li>
+the prompt, or the center if <tt class="docutils literal"><span class="pre">centered</span></tt> is <tt class="docutils literal"><span class="pre">True</span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre">y</span></tt> (int): The vertical coordinate, determining the top of
-the prompt, or the center if <tt class="docutils literal"><span class="pre">centered</span></tt> is <tt class="xref docutils literal"><span class="pre">True</span></tt>.</li>
-<li><tt class="docutils literal"><span class="pre">timelimit</span></tt> (int): (in milliseconds). Default is <tt class="xref docutils literal"><span class="pre">None</span></tt>.</li>
+the prompt, or the center if <tt class="docutils literal"><span class="pre">centered</span></tt> is <tt class="docutils literal"><span class="pre">True</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">timelimit</span></tt> (int): (in milliseconds). Default is <tt class="docutils literal"><span class="pre">None</span></tt>.</li>
 <li><tt class="docutils literal"><span class="pre">prompt</span></tt> (str): To be printed in front of the typed text. Default
 is a null string.</li>
 <li><tt class="docutils literal"><span class="pre">fontsize</span></tt> (int): Size of text printed on screen. Default is
@@ -631,7 +635,7 @@ typed.  Default is <tt class="docutils literal"><span class="pre">40</span></tt>
 <li><tt class="docutils literal"><span class="pre">fgcolor</span></tt> (str or tuple): Color of text; name or rgb tuple.
 Default is <tt class="docutils literal"><span class="pre">self.fgcolor</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">centered</span></tt> (bool): Maintain a centered alignment. <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>
-become offset of center if <tt class="xref docutils literal"><span class="pre">True</span></tt>. Default is <tt class="xref docutils literal"><span class="pre">False</span></tt>.</li>
+become offset of center if <tt class="docutils literal"><span class="pre">True</span></tt>. Default is <tt class="docutils literal"><span class="pre">False</span></tt>.</li>
 </ul>
 </dd>
 <dt>Returns:</dt>
@@ -775,7 +779,7 @@ surface to be blitted on.</p>
 <li><tt class="docutils literal"><span class="pre">yoff</span></tt> (int): Vertical offset from center.</li>
 <li><tt class="docutils literal"><span class="pre">alpha</span></tt> (float): Amount of opacity. Defaults to fully opaque.</li>
 <li><tt class="docutils literal"><span class="pre">rewrite_background</span></tt> (bool): Whether the surface is written to
-<tt class="docutils literal"><span class="pre">self.background</span></tt>. Defaults to <tt class="xref docutils literal"><span class="pre">True</span></tt>.</li>
+<tt class="docutils literal"><span class="pre">self.background</span></tt>. Defaults to <tt class="docutils literal"><span class="pre">True</span></tt>.</li>
 </ul>
 </dd>
 <dt>Returns:</dt>
@@ -942,7 +946,7 @@ can then be drawn by callind <tt class="docutils literal"><span class="pre">draw
 <tt class="descname">bivariate_normpdf</tt><big>(</big><em>x</em>, <em>y</em>, <em>sigma_x</em>, <em>sigma_y</em>, <em>mu_x</em>, <em>mu_y</em>, <em>mul</em><big>)</big><a class="reference internal" href="_modules/pypsyexp.html#GaborPatch.bivariate_normpdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pypsyexp.GaborPatch.bivariate_normpdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formula used to set the gaussion blur. Covariance is fixed at 0.</p>
 <div class="math">
-<p><img src="_images/math/c7447a51ceb05634e52a0d98289de269ca3a0dfd.png" alt="\mathrm{pdf}(\mathcal{N}(\mu, \Sigma), \mathbf{x}) = (2\pi)^{-k/2} |\Sigma|^{- 1/2} e^{-(1/2)(\mathbf{x}-\mu)'\Sigma^{-1}(\mathbf{x}-\mu)}" /></p>
+<p><img src="_images/math/c7447a51ceb05634e52a0d98289de269ca3a0dfd.png" alt="\mathrm{pdf}(\mathcal{N}(\mu, \Sigma), \mathbf{x}) = (2\pi)^{-k/2} |\Sigma|^{- 1/2} e^{-(1/2)(\mathbf{x}-\mu)'\Sigma^{-1}(\mathbf{x}-\mu)}"/></p>
 </div><dl class="docutils">
 <dt>Required Arguments:</dt>
 <dd><ul class="first last simple">
@@ -1043,7 +1047,7 @@ returns an rgb tuple corresponding to the name.</dd>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Todd Gureckis.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
