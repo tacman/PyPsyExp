@@ -4,7 +4,7 @@ This demo recaptulates the famous stroop task. It presents words in one of four
 colors (red, green, blue, or yellow) and depending on the block, queries either
 the color specified by the word or the color of the word itself. In a block in
 which the actual color is queried, some catch words are either gibberish or
-non-color english words. One variable manipulated is whether the word is
+non-color English words. One variable manipulated is whether the word is
 inverted or not.
 
 The demo is provided as a demonstration of appropriate coding practices while
